@@ -1,46 +1,52 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>خريطتي على GitHub 🧭</title>
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  />
-  <style>
-    body, html { margin: 0; height: 100%; }
-    #map { width: 100%; height: 100vh; }
+  <meta charset="utf-8" />
+  <title>My Map with North Arrow</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    /* تصميم إشارة الشمال */
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <style>
+    html, body { height: 100%; margin: 0; }
+    #map { width: 100%; height: 100%; }
+
+    /* تصميم بسيط لإشارة الشمال */
     .north-arrow {
       position: absolute;
       top: 10px;
       right: 10px;
-      width: 60px;
-      height: 60px;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Compass_rose_pale.svg/512px-Compass_rose_pale.svg.png') no-repeat center;
-      background-size: contain;
-      z-index: 1000;
-      pointer-events: none;
-      opacity: 0.9;
+      background: white;
+      border-radius: 8px;
+      padding: 5px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.3);
+    }
+    .north-arrow img {
+      width: 40px;
+      height: 40px;
     }
   </style>
 </head>
 <body>
+
   <div id="map"></div>
-  <div class="north-arrow"></div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- إشارة الشمال -->
+  <div class="north-arrow">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Compass_rose_pale.svg/512px-Compass_rose_pale.svg.png" alt="North Arrow">
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
   <script>
-    // إنشاء الخريطة
-    var map = L.map('map').setView([31.5, 35.1], 10);
-
-    // إضافة طبقة الخرائط (OpenStreetMap)
+    var map = L.map('map').setView([31.5, 35.1], 9);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
+      attribution: '© OpenStreetMap contributors'
     }).addTo(map);
   </script>
+
 </body>
 </html>
